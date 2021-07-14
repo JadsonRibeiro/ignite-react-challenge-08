@@ -266,6 +266,8 @@ describe('Home page', () => {
 
     render(<Home />, { wrapper });
 
+    console.log('Log #01');
+
     expect(await screen.findByText('The best doge')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Doge' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'Doge' })).toBeInTheDocument();
@@ -278,6 +280,8 @@ describe('Home page', () => {
       name: 'Carregar mais',
     });
     fireEvent.click(loadMoreButton);
+
+    console.log('Log #02');
 
     expect(await screen.findByText('The best doge')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Doge' })).toBeInTheDocument();
@@ -292,6 +296,8 @@ describe('Home page', () => {
     expect(screen.getByRole('img', { name: 'Vini' })).toBeInTheDocument();
 
     expect(loadMoreButton).not.toBeInTheDocument();
+
+    console.log('Log #03');
 
     const addNewImageButton = screen.getByText('Adicionar imagem');
     fireEvent.click(addNewImageButton);
@@ -315,6 +321,8 @@ describe('Home page', () => {
         value: 'Flying forever',
       },
     });
+
+    console.log('Log #04');
 
     await screen.findByRole('img', { name: 'Uploaded photo' });
     expect(fileInput.files[0]).toStrictEqual(file);
@@ -365,17 +373,25 @@ describe('Home page', () => {
 
     fireEvent.click(submitButton);
 
+    console.log('Log #05');
+
     expect(await screen.findByText('The best doge')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Doge' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'Doge' })).toBeInTheDocument();
+
+    console.log('Log #05.1');
 
     expect(await screen.findByText('The best friend')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Danilo' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'Danilo' })).toBeInTheDocument();
 
+    console.log('Log #05.2');
+
     expect(await screen.findByText('The ??')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Vini' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'Vini' })).toBeInTheDocument();
+
+    console.log('Log #06');
 
     expect(await screen.findByText('Flying forever')).toBeInTheDocument();
     expect(
@@ -384,6 +400,8 @@ describe('Home page', () => {
     expect(
       screen.getByRole('img', { name: 'Rocket League' })
     ).toBeInTheDocument();
+
+    console.log('Log #07');
 
     expect(loadMoreButton).not.toBeInTheDocument();
   });

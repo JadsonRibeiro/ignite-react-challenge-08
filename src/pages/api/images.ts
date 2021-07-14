@@ -1,25 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fauna from 'faunadb';
 
+import { ImagesQueryResponse } from '../../types';
+
 const { query } = fauna;
 const client = new fauna.Client({ secret: process.env.FAUNA_API_KEY });
-
-interface ImagesQueryResponse {
-  after?: {
-    id: string;
-  };
-  data: {
-    data: {
-      title: string;
-      description: string;
-      url: string;
-    };
-    ts: number;
-    ref: {
-      id: string;
-    };
-  }[];
-}
 
 export default async function handler(
   req: NextApiRequest,
